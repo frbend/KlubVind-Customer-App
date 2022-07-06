@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { ExcelRenderer} from 'react-excel-renderer';
 import {Col, Input, InputGroup, FormGroup, Label, Button, Container, Card } from 'reactstrap';
-
-
 //React-excel renderer
 
 class Table extends Component {
@@ -78,13 +76,13 @@ class Table extends Component {
   }
 
   //for next button --> needs to show next row with all items
-  nextItem = (type, resp) =>{
-    var x = resp.rows[1];
-    var y = resp.rows;
-    this.setState(prevState =>{
-      return {x: type === 'add' ? prevState.x + y: prevState.x - y}
-    })
-    console.log(x, y);
+  nextItem = () =>{
+    var x = this.state.rows[1];
+    var y = this.state.rows + 1;
+    // this.setState(prevState =>{
+    //   return {x: type === 'add' ? prevState.x + y: prevState.x - y}
+    // })
+    console.log(x,y);
   }
   //[4].props.children[3]
 
@@ -124,7 +122,14 @@ class Table extends Component {
 
               {/* <OutTable data={this.state.rows[1]} columns={this.state.cols} tableClassName="ExcelTable" /> */}
               <div className="ExcelResult">
-                    <h2>Info: </h2><ul>{this.state.rows[0]}</ul>
+                    <h2>Info:</h2>
+                      <ol>
+                        <li>{this.state.rows[0][0]}</li>
+                        <li>{this.state.rows[0][1]}</li>
+                        <li>{this.state.rows[0][12]}</li>
+                        <li>{this.state.rows[0][11]}</li>
+                        <li>{this.state.rows[0][13]}</li>
+                      </ol>
                     <h2>Result: </h2>
                     <ol>
                       <li>Kommune: {this.state.rows[2][0]}</li>
@@ -132,6 +137,14 @@ class Table extends Component {
                       <li>Tel.: {this.state.rows[2][12]}</li>
                       <li>Navn: {this.state.rows[2][11]}</li>
                       <li>Email: {this.state.rows[2][13]}</li>
+                    </ol>
+                    <h2>Result 2: </h2>
+                    <ol>
+                      <li>Kommune: {this.state.rows[3][0]}</li>
+                      <li>Forening: {this.state.rows[3][1]}</li>
+                      <li>Tel.: {this.state.rows[3][12]}</li>
+                      <li>Navn: {this.state.rows[3][11]}</li>
+                      <li>Email: {this.state.rows[3][13]}</li>
                     </ol>
               </div> 
           </Card>  
