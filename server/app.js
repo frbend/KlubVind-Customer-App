@@ -11,7 +11,7 @@ app.use(cors());
 
 app.get('/list', function (req, res) {
 
-    var getCallList = "SELECT * FROM call_list";
+    var getCallList = "SELECT * FROM call_list LIMIT 3";
 
     connection.query(getCallList, function(err, result){
         if(err){
@@ -26,7 +26,9 @@ app.get('/list', function (req, res) {
 
 app.get('/list/Kommune/:Kommune', function (req, res) {
 
-    var getCallList = `SELECT * FROM call_list WHERE Kommune = '${req.params.Kommune}'`;
+    //return only 1 result --> temporary, would be better to return everything and 
+    //then display one item + next
+    var getCallList = `SELECT * FROM call_list WHERE Kommune = '${req.params.Kommune}' LIMIT 5`;
 
 
     connection.query(getCallList, function(err, result){
@@ -39,5 +41,21 @@ app.get('/list/Kommune/:Kommune', function (req, res) {
         }
     });
 });
+
+// app.get('/list/one', function (req, res) {
+
+//     var getNextRow = "SELECT [Next Row].* FROM call_list";
+
+//     connection.query(getNextRow, function(err, result){
+//         if(err){
+//             console.log(err);
+//             res.send("Unable to get call list");
+//         }
+//         else{
+//             res.send(result);
+//         }
+//     });
+// });
+
 
  app.listen(port, () =>console.log(`Listening on port ${port}`));

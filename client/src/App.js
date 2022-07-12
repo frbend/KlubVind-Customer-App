@@ -1,50 +1,19 @@
 import './App.css';
 import React from 'react';
 // import { useState } from 'react';
-// import Axios from 'axios';
+ //import Axios from 'axios';
+ import Search from './components/Search';
+ import InitialRender from './components/InitialRender';
 
 class App extends React.Component{
   constructor(props){
     super(props);
-    this.state = {apiResponse:""};
-    //const [callList, setCallList] = useState([]);
+    this.state = {
+    data : [],
+    nextData: [],
+    };
+
   }
-  // callAPI(){
-  //   fetch("http://localhost:8080/list/Kommune/Randers")
-  //   .then(res => res.text())
-  //   .then(res => this.setState({apiResponse: res}))
-  // }
-  // componentDidMount(){
-  //   this.callAPI();
-  // }
-
- 
-
-  //  getList = () =>{
-  //   Axios.get("http://localhost:8080/list").then((response) =>{
-  //     console.log(response);
-  //     setCallList(response.data)
-  //   })
-  // }
-
-
-  async getData(){
-    const url = "http://localhost:8080/list";
-    const resp = await fetch(url);
-    const data = await resp.json();
-    return this.setState({
-      list : data 
-    })
-  };
-
-  componentDidMount() {
-    this.getData().then(() => console.log("received data: ", this.state.list));
-}
-
- 
-//TODO: DISPLAY DATA ON THE PAGE IN LIST ITEMS
-//DATA IS ALREADY FETCHED FROM SQL ON COMPONENTDITMOUNT (DATA DISPLAYED IN CONSOLE --> GET IT ON THE PAGE)
-
 
 
   render(){
@@ -55,10 +24,8 @@ class App extends React.Component{
         </header>
         <div className="Body">
           <div className="table-container">
-            <label>Kommune: </label>
-            <input type="text" />
-            <button className="searchButton" onClick={this.getData}>Search</button>
-
+              <Search /> <br />
+              <InitialRender /> 
           </div>
         </div>
       </div>
