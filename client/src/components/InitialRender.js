@@ -21,7 +21,7 @@ class IntialRender extends React.Component{
   render(){
       return(
           <div>
-            <ul className="table">
+            {/* <ul className="table">
                 {this.state.data.map(data =>(
                     <p>
                     <li key={data._id}>Kommune: {data.Kommune}</li>
@@ -30,7 +30,7 @@ class IntialRender extends React.Component{
                     <li key={data._id}>Email: {data.Mail_skrab}</li>                    
                     </p>
                 ))}
-            </ul>
+            </ul> */}
           </div>
       )
   }

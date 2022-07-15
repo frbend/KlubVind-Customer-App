@@ -8,10 +8,7 @@ import React from 'react';
 class App extends React.Component{
   constructor(props){
     super(props);
-    this.state = {
-    data : [],
-    nextData: [],
-    };
+    this.state = {};
 
   }
 
@@ -20,7 +17,7 @@ class App extends React.Component{
     return (
       <div className="App">
         <header className="App-header">
-          <h2>Importing MySQL data to React</h2><br />
+          <h2>React mySQL Call List App</h2><br />
         </header>
         <div className="Body">
           <div className="table-container">

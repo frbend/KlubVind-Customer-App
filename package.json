@@ -18,8 +18,8 @@
   },
   "scripts": {
     "start": "cd client && npm start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
+    "build": "cd client && npm run build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

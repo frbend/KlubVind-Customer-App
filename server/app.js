@@ -11,9 +11,9 @@ app.use(cors());
 
 app.get('/list', function (req, res) {
 
-    var getCallList = "SELECT * FROM call_list LIMIT 3";
+    var getTopList = "SELECT * FROM call_list LIMIT 3";
 
-    connection.query(getCallList, function(err, result){
+    connection.query(getTopList, function(err, result){
         if(err){
             console.log(err);
             res.send("Unable to get call list");
@@ -26,12 +26,10 @@ app.get('/list', function (req, res) {
 
 app.get('/list/Kommune/:Kommune', function (req, res) {
 
-    //return only 1 result --> temporary, would be better to return everything and 
-    //then display one item + next
-    var getCallList = `SELECT * FROM call_list WHERE Kommune = '${req.params.Kommune}' LIMIT 5`;
+    var getCallList = 'SELECT * FROM call_list WHERE Kommune = ? LIMIT 1';
 
 
-    connection.query(getCallList, function(err, result){
+    connection.query(getCallList, [req.params.Kommune], function(err, result){
         if(err){
             console.log(err);
             res.send("Unable to get call list");
@@ -42,20 +40,33 @@ app.get('/list/Kommune/:Kommune', function (req, res) {
     });
 });
 
-// app.get('/list/one', function (req, res) {
+app.get('/list/Kommune/:Kommune/next/:id', function (req, res) {
 
-//     var getNextRow = "SELECT [Next Row].* FROM call_list";
+    var getNextRow = 'SELECT * FROM call_list WHERE id > ? LIMIT 1'
+    connection.query(getNextRow,[req.params.id], function(err, result){
+        if(err){
+            console.log(err);
+            res.send("Unable to get call list");
+        }
+        else{
+            res.send(result);
+        }
+    });
+});
 
-//     connection.query(getNextRow, function(err, result){
-//         if(err){
-//             console.log(err);
-//             res.send("Unable to get call list");
-//         }
-//         else{
-//             res.send(result);
-//         }
-//     });
-// });
+app.get('/list/Kommune/:Kommune/prev/:id', function (req, res) {
+
+    var getPrevRow = 'SELECT * FROM call_list WHERE id < ? ORDER BY id DESC LIMIT 1'
+    connection.query(getPrevRow,[req.params.id], function(err, result){
+        if(err){
+            console.log(err);
+            res.send("Unable to get call list");
+        }
+        else{
+            res.send(result);
+        }
+    });
+});
 
 
  app.listen(port, () =>console.log(`Listening on port ${port}`));

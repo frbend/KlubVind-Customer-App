@@ -1,28 +1,46 @@
 import React from 'react';
+// import Axios from 'axios';
+//import Search from './Search';
 
 
 
 class NextResult extends React.Component{
     constructor(props){
         super(props);
-        //Might not need??
-        this.updateState = this.updateState.bind(this);
+        this.state={
+            responseData: []
+        };   
     }
 
 
-//TODO: Need IDs in the database to switch to next one????
+    // getData = () => {
+    //     Axios.get(`http://localhost:8080/list/Kommune/` + this.state.search)
+    //       .then(responseData => {
+    //           if(responseData.data.length === 0){
+    //             console.warn("No results")
+    //           }else{
+    //           this.setState({responseData: responseData.data});
+    //           console.log(responseData.data[0])
+    //             }
+    //         }
+    //     )
+    // }
 
-  updateState() {
-    //this.updateState({responseData: responseData.data +1})
-    console.log("Clicked the next button");
-}
-//return console.log("pressed next button")
+    // nextItem =() =>{
+    //     Axios.get(`http://localhost:8080/list/Kommune/:Kommune/next/`+ this.state.responseData[0].id)
+    //     .then(newData =>{
+    //         this.setState({responseData: newData.data});
+    //         console.log(newData.data[0])
+    //     })
+    // }
+
+
 
 
     render(){
         return(
             <div>
-                <button onClick={this.updateState}>Next</button>
+                <button onClick={this.nextItem} className="btn btn-primary">Next</button>
             </div>
         );
     }
