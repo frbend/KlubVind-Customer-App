@@ -24,7 +24,7 @@
     "preinstall": "cd server && npm install",
     "install": "cd client && npm install",
     "prebuild": "cd client && npm run build",
-    "build": "cd client && serve -s build & cd server && node app.js",
+    "build": "cd server && node app.js",
     "eject": "react-scripts eject"
   },
   
