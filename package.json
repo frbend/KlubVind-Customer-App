@@ -22,7 +22,8 @@
     "test": "react-scripts test",
     "preinstall": "cd server && npm install",
     "install": "cd client && npm install",
-    "build": "concurrently \"cd server && node app.js\" \"cd client && npm run build\"",
+    "build": "cd client && npm run build",
+    "postbuild":"concurrently \"cd server && node app.js\" \"cd client && serve -s build\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
