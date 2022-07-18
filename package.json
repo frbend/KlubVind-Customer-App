@@ -23,8 +23,8 @@
     "test": "react-scripts test",
     "preinstall": "cd server && npm install",
     "install": "cd client && npm install",
-    "build": "cd client && npm run build",
-    "postbuild":"concurrently \"cd client && serve -s build\" \"cd server && node app.js\"",
+    "prebuild": "cd client && npm run build",
+    "build": "cd client && serve -s build & cd server && node app.js",
     "eject": "react-scripts eject"
   },
   
