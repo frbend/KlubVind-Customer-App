@@ -20,6 +20,7 @@
     "start": "cd client && npm start",
     "test": "react-scripts test",
     "build": "cd client && npm run build",
+    "postbuild": "cd client && serve -s build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
