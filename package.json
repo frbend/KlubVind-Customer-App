@@ -16,6 +16,7 @@
     "react-scripts": "5.0.1",
     "react-window": "^1.8.7",
     "reactstrap": "^9.1.1",
+    "serve": "^14.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -23,11 +24,10 @@
     "test": "react-scripts test",
     "preinstall": "cd server && npm install",
     "install": "cd client && npm install",
-    "prebuild":"(cd server && node app.js) & cd client && npm run build",
+    "prebuild": "(cd server && node app.js) & cd client && npm run build",
     "build": "serve client/build",
     "eject": "react-scripts eject"
   },
-  
   "eslintConfig": {
     "extends": [
       "react-app",
