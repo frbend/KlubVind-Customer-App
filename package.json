@@ -25,7 +25,7 @@
     "preinstall": "cd server && npm install",
     "install": "cd client && npm install",
     "prebuild": "(cd server && node app.js) & cd client && npm run build",
-    "build": "serve https://klubvind-call-list.netlify.app/",
+    "build": "serve /",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
