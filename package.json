@@ -18,13 +18,12 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start":"cd server && node app.js",
-    "dev": "concurrently \"cd client && npm start\" \"cd server && nodemon app.js\"",
+    "start": "concurrently \"cd client && npm start\" \"cd server && nodemon app.js\"",
     "test": "react-scripts test",
     "preinstall": "cd server && npm install",
     "install": "cd client && npm install",
-    "prebuild":"cd client && npm run build",
-    "build": "concurrently \"cd client && serve -s build\" \"cd server && node app.js\"",
+    "prebuild":"(cd server && node app.js) & cd client && npm run build",
+    "build": "cd client && serve -s build",
     "eject": "react-scripts eject"
   },
   
