@@ -25,7 +25,7 @@
     "preinstall": "cd server && npm install",
     "install": "cd client && npm install",
     "prebuild": "(cd server && node app.js) & cd client && npm run build",
-    "build": "serve client/build",
+    "build": "cd client && serve -s build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
