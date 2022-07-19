@@ -2,6 +2,7 @@
   "name": "klubvind-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://klubvind-call-list.netlify.app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -23,7 +24,7 @@
     "preinstall": "cd server && npm install",
     "install": "cd client && npm install",
     "prebuild":"(cd server && node app.js) & cd client && npm run build",
-    "build": "(cd client) & serve -s build",
+    "build": "cd client && serve -s build",
     "eject": "react-scripts eject"
   },
   
