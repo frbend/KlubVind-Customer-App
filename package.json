@@ -16,15 +16,15 @@
     "react-window": "^1.8.7",
     "reactstrap": "^9.1.1",
     "serve": "^14.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "nodemon": "^2.0.19"
   },
   "scripts": {
     "start": "concurrently \"cd client && npm start\" \"cd server && nodemon app.js\"",
     "test": "react-scripts test",
     "preinstall": "cd server && npm install",
     "install": "cd client && npm install",
-    "prebuild": "(cd server && node app.js) & cd client && npm run build",
-    "build":"cd client && serve -s build",
+    "build": "(cd server && nodemon app.js) & cd client && npm run build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
