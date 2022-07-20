@@ -2,7 +2,6 @@
   "name": "klubvind-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://klubvind-call-list.netlify.app/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -24,7 +23,8 @@
     "test": "react-scripts test",
     "preinstall": "cd server && npm install",
     "install": "cd client && npm install",
-    "build": "(cd server && node app.js) & cd client && npm run build",
+    "prebuild": "(cd server && node app.js) & cd client && npm run build",
+    "build":"serve client/build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
