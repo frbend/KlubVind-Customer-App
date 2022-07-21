@@ -1,1 +1,1 @@
-web: (cd server && nodemon app.js) & cd client && npm run build
+web: npm run build

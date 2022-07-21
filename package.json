@@ -20,12 +20,14 @@
     "nodemon": "^2.0.19"
   },
   "scripts": {
-    "start": "concurrently \"cd client && npm start\" \"cd server && nodemon app.js\"",
-    "test": "react-scripts test",
-    "preinstall": "cd server && npm install",
-    "install": "cd client && npm install",
-    "build": "(cd server && nodemon app.js) & cd client && npm run build",
-    "postbuild": "cd client && serve -s build",
+
+    "install-client": "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "heroku-build":"concurrently --kill-others-on-fail \"npm run server\" \"npm run build --prefix client\" & npm run serve-server",
+    "server":"cd server && nodemon app.js",
+    "serve-server":"cd client && serve -s build",
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+    "build": "concurrently --kill-others-on-fail \"npm run server\" \"npm run build --prefix client\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
