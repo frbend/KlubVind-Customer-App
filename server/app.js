@@ -4,7 +4,7 @@ const connection = require('./dbConfig');
 
 
 apiPort = 8080;
-const port = apiPort || process.env.PORT ; // Pick port 8080 if the PORT env variable is empty.
+const port =process.env.PORT || apiPort; // Pick port 8080 if the PORT env variable is empty.
 const app = express();
 app.use(cors());
 
