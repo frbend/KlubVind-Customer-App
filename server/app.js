@@ -4,7 +4,7 @@ const connection = require('./dbConfig');
 
 
 apiPort = 8080;
-const port = process.env.PORT || apiPort; // Pick port 8080 if the PORT env variable is empty.
+const port = apiPort || process.env.PORT ; // Pick port 8080 if the PORT env variable is empty.
 const app = express();
 app.use(cors());
 
@@ -68,5 +68,32 @@ app.get('/list/Kommune/:Kommune/prev/:id', function (req, res) {
     });
 });
 
+//get ID from search Result
+//post into the table with the same ID
+//post into the Note row
+//if Note row already has something --> add it to that row
 
- app.listen(port, () =>console.log(`Listening on port ${port}`));
+
+app.post('/list/Kommune/:Kommune/:id/Note/:Note', function (req, res) {
+
+    // Query from sql = UPDATE `call_list` SET Note = 'Testing' WHERE id = 9258;
+
+    //pull data from DB and check if it's empty - select note and check if it's null
+    //if it is set it to add it to the string or else just add the string input If (!isEmpty(note)) { note += ” ” }
+    //note += text and setState
+
+     var postNote = 'UPDATE call_list SET Note = ? WHERE id = ?'
+
+    connection.query(postNote,[req.params.Note, req.params.id], function(err, result){
+        if(err){
+            console.log(err);
+            res.send("Unable to get call list");
+        }
+        else{
+            res.send(result);
+        }
+    });
+});
+
+
+ app.listen(process.env.PORT || port, () =>console.log(`Listening on port ${port}`));
