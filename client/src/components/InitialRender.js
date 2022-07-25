@@ -11,7 +11,7 @@ class IntialRender extends React.Component{
 
 
   componentDidMount() {
-    Axios.get("http://localhost:8080/list/")
+    Axios.get("https://klubvind-call-list.herokuapp.com/list/")
       .then(res =>{
         this.setState({data: res.data});
         console.log(this.state.data);

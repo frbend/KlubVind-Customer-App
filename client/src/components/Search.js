@@ -19,7 +19,7 @@ class Search extends React.Component{
     //for search
 
     getData = () => {
-        Axios.get(`https://klubvind-call-list.herokuapp.com/list/Kommune/` + this.state.search)
+        Axios.get('https://klubvind-call-list.herokuapp.com/list/Kommune/' + this.state.search)
           .then(responseData => {
               if(responseData.data.length === 0){
                 console.warn("No results")
@@ -38,7 +38,7 @@ class Search extends React.Component{
     //for switching between previous and next line
 
     prevItem =() =>{
-        Axios.get(`https://klubvind-call-list.herokuapp.com/list/Kommune/:Kommune/prev/`+ this.state.responseData[0].id)
+        Axios.get('https://klubvind-call-list.herokuapp.com/list/Kommune/:Kommune/prev/'+ this.state.responseData[0].id)
         .then(prevData =>{
             this.setState({responseData: prevData.data});
             console.log(prevData.data[0])
@@ -46,7 +46,7 @@ class Search extends React.Component{
 }
 
     nextItem =() =>{
-        Axios.get(`https://klubvind-call-list.herokuapp.com/list/Kommune/:Kommune/next/`+ this.state.responseData[0].id)
+        Axios.get('https://klubvind-call-list.herokuapp.com/list/Kommune/:Kommune/next/'+ this.state.responseData[0].id)
         .then(newData =>{
             this.setState({responseData: newData.data});
             console.log(newData.data[0])
