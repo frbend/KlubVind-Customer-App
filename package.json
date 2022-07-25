@@ -9,6 +9,8 @@
     "axios": "^0.27.2",
     "bootstrap": "^5.1.3",
     "concurrently": "^7.2.2",
+    "cors": "^2.8.5",
+    "nodemon": "^2.0.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-excel-renderer": "^1.1.0",
@@ -16,16 +18,14 @@
     "react-window": "^1.8.7",
     "reactstrap": "^9.1.1",
     "serve": "^14.0.1",
-    "web-vitals": "^2.1.4",
-    "nodemon": "^2.0.19"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
-
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build",
-    "heroku-build":"concurrently --kill-others-on-fail \"npm run server\" \"npm run build --prefix client\" & npm run serve-server",
-    "server":"cd server && node app.js",
-    "serve-server":"cd client && serve -s build",
+    "heroku-build": "concurrently --kill-others-on-fail \"npm run server\" \"npm run build --prefix client\" & npm run serve-server",
+    "server": "cd server && node app.js",
+    "serve-server": "cd client && serve -s build",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
     "build": "npm run server",
     "eject": "react-scripts eject"
