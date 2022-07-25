@@ -1,12 +1,19 @@
 const express = require('express'); // The express.js library for implementing the API
 const cors = require('cors');
 const connection = require('./dbConfig');
+const path = require("path");
 
 
 apiPort = 8080;
 const port = process.env.PORT || apiPort; // Pick port 8080 if the PORT env variable is empty.
 const app = express();
 app.use(cors());
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+
+
+app.get('*', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 
 app.get('/list', function (req, res) {
