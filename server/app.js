@@ -12,7 +12,7 @@ app.use(express.static(path.resolve(__dirname, "/build")));
 
 
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'cd ../client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '/../client/build', 'index.html'));
 });
 
 
