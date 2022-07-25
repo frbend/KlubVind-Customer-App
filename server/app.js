@@ -11,10 +11,6 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 
-app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
-});
-
 
 app.get('/list', function (req, res) {
 
@@ -101,6 +97,12 @@ app.post('/list/Kommune/:Kommune/:id/Note/:Note', function (req, res) {
         }
     });
 });
+
+// All remaining requests return the React app, so it can handle routing.
+app.get('*', function(request, response) {
+    response.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+  });
+
 
 
  app.listen(port, () =>console.log(`Listening on port ${port}`));
