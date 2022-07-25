@@ -30,7 +30,6 @@
     "server": "cd server && node app.js",
     "serve-server": "cd client && serve -s build",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
-    "build": "npm run heroku-build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
