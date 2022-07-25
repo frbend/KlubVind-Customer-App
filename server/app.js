@@ -8,11 +8,11 @@ apiPort = 8080;
 const port = process.env.PORT || apiPort; // Pick port 8080 if the PORT env variable is empty.
 const app = express();
 app.use(cors());
-app.use(express.static(path.resolve(__dirname, "/build")));
+app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 
 app.get('*', function (req, res) {
-    res.sendFile(path.join(__dirname, '/../client/build', 'index.html'));
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 
