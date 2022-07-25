@@ -26,7 +26,6 @@
   "scripts": {
     "install-client": "cd client && npm install",
     "heroku-build": "concurrently --kill-others-on-fail \"npm run server\" \"npm run build --prefix client\"",
-    "heroku-postbuild":"cd client && serve -s build",
     "server": "cd server && node app.js",
     "serve-server": "cd client && serve -s build",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
