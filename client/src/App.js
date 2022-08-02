@@ -2,8 +2,9 @@ import './App.css';
 import React from 'react';
 // import { useState } from 'react';
  //import Axios from 'axios';
- import Search from './components/Search';
- import InitialRender from './components/InitialRender';
+import Search from './components/Search';
+//import InitialRender from './components/InitialRender';
+//import PostNote from './components/PostNote';
 
 class App extends React.Component{
   constructor(props){
@@ -22,7 +23,6 @@ class App extends React.Component{
         <div className="Body">
           <div className="table-container">
               <Search /> <br />
-              <InitialRender /> 
           </div>
         </div>
       </div>
