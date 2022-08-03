@@ -14,9 +14,20 @@ class Search extends React.Component{
         };
     }
 
+
+
+
+    handleChange = event => {
+        event.preventDefault();
+        this.setState({value: event.target.value})
+    }
+
     //for search
 
     getData = () => {
+        if(this.state.search === ""){
+            console.log("empty search")
+        }else{
         Axios.get('https://klubvind-call-list.herokuapp.com/list/Kommune/' + this.state.search)
           .then(responseData => {
               if(responseData.data.length === 0){
@@ -28,6 +39,7 @@ class Search extends React.Component{
             }
         )
     }
+}
 
     onChange = event => {
         this.setState({ search: event.target.value});
@@ -63,11 +75,6 @@ class Search extends React.Component{
     }
 
     //for adding note
-
-    handleChange = event => {
-        event.preventDefault();
-        this.setState({value: event.target.value})
-    }
 
     ///list/Kommune/:Kommune/:id/Note/:Note
 
