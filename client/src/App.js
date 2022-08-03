@@ -3,6 +3,7 @@ import React from 'react';
 // import { useState } from 'react';
  //import Axios from 'axios';
 import Search from './components/Search';
+import Logo from './images/Screenshot-2022-08-03.png';
 //import InitialRender from './components/InitialRender';
 //import PostNote from './components/PostNote';
 
@@ -18,7 +19,8 @@ class App extends React.Component{
     return (
       <div className="App">
         <header className="App-header">
-          <h2>React mySQL Call List App</h2><br />
+         <a href="https://klubvind.dk/" target="_blank" rel="noreferrer noopener"> <img src={Logo} className="Logo-img" alt="fireSpot"/> </a>
+          <h2>KlubVind Call List App</h2><br />
         </header>
         <div className="Body">
           <div className="table-container">

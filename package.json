@@ -27,8 +27,9 @@
     "install-client": "cd client && npm install",
     "heroku-build": "concurrently --kill-others-on-fail \"npm run server\" \"npm run build --prefix client\"",
     "server": "cd server && node app.js",
+    "dev-server": "cd server && nodemon app.js",
     "serve-server": "cd client && serve -s build",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run start --prefix client\"",
+    "start": "concurrently --kill-others-on-fail \"npm run dev-server\" \"npm run start --prefix client\"",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

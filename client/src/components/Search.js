@@ -10,11 +10,9 @@ class Search extends React.Component{
         this.state = {
             responseData: [],
             search: "",
-            value: ''
+            value: '',
         };
     }
-    //store ID in a state
-
 
     //for search
 
@@ -24,15 +22,26 @@ class Search extends React.Component{
               if(responseData.data.length === 0){
                 console.warn("No results")
               }else{
-              this.setState({responseData: responseData.data});
+              this.setState({responseData: responseData.data, search: ""});
               console.log(responseData.data[0])
                 }
             }
         )
     }
+
     onChange = event => {
         this.setState({ search: event.target.value});
         //console.log(event.target.value);
+    }
+
+    //To search using enter
+     onEnter=(event)=> {
+         if(this.state.search === "" && event.keyCode === 13){
+             console.log("empty search")
+         }
+        else if (event.keyCode === 13) {
+            this.getData();
+        }
     }
 
     //for switching between previous and next line
@@ -63,56 +72,58 @@ class Search extends React.Component{
     ///list/Kommune/:Kommune/:id/Note/:Note
 
     getNote = () => {
-        if(this.state.responseData[0].Note !== null){
-            console.log("Note is: " + this.state.value + ' , ' + this.state.responseData[0].Note);
-            Axios.post('http://localhost:8080/list/Kommune/'+ this.state.responseData[0].Kommune + '/' + this.state.responseData[0].id + '/Note/' + this.state.value)
-                .then(updatedNote =>{
-                    this.setState({Note: updatedNote + this.state.responseData[0].Note});
-                    console.log(updatedNote);
-                })
-        }else{
+        if(this.state.responseData[0].Note === null){
             console.log("Note is empty, adding current input: " + this.state.value)
-                Axios.post('http://localhost:8080/list/Kommune/'+ this.state.responseData[0].Kommune + '/' + this.state.responseData[0].id + '/Note/' + this.state.value)
-                    .then(newNote =>{
-                        this.setState({Note : newNote})
-                        console.log(newNote.data.message + " Note added : " + this.state.value)
-                    })
+            Axios.post('http://localhost:8080/list/Kommune/'+ this.state.responseData[0].Kommune + '/' + this.state.responseData[0].id + '/Note/' + this.state.value)
+                .then(newNote =>{
+                    this.setState({Note : newNote})
+                    console.log(newNote.data.message + " Note added : " + this.state.value)
+                })
+
+        }else{
+        console.log("Note is: " + this.state.value + ' , ' + this.state.responseData[0].Note);
+        Axios.post('http://localhost:8080/list/Kommune/'+ this.state.responseData[0].Kommune + '/' + this.state.responseData[0].id + '/Note/' + this.state.value)
+            .then(updatedNote =>{
+                this.setState({Note: this.state.value + ' , ' + this.state.responseData[0].Note});
+                console.log(this.updatedNote);
+            })
         }
     }
+
+
+
 
 
     render(){
         return(
         <div>
-            <label className="searchHeading">Search by Kommune:</label>
-            <input type="text" onChange={this.onChange} value={this.state.search}/>
-            <button onClick={this.getData} className="btn btn-primary">Search</button><br />
+            <div className="search-bar">
+                <label className="searchHeading">Search by Kommune:&nbsp;&nbsp;&nbsp;</label>
+                <input type="text" onChange={this.onChange} value={this.state.search} onKeyDown={(e) => this.onEnter(e) }/>&nbsp;&nbsp;
+                <button onClick={this.getData} className="primary-button" type="submit">Search</button><br />
+            </div>
             <div className="button-box col-lg-12">
-                <button onClick={this.prevItem} className="btn btn-primary ">Previous</button>
-                <button onClick={this.nextItem} className="btn btn-primary ">Next</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;<button onClick={this.prevItem} className="primary-button">Previous</button>&nbsp;&nbsp;
+                <button onClick={this.nextItem} className="primary-button">Next</button>
             </div>
             <table className="table">
                 <thead>
                     <tr>
-                    <th scope="col">ID</th>
                     <th scope="col">Kommune</th>
                     <th scope="col">Forening</th>
-                    <th scope="col">Kontakt skrab</th>
                     <th scope="col">Kontakt</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Telefon</th>                    
+                    <th scope="col">Telefon</th>  
+                    <th scope="col">Email</th>             
                     </tr>
                 </thead>
                 <tbody>
                     {this.state.responseData.map(responseData =>(
                         <tr key={responseData.id}>
-                        <td>{responseData.id}</td>
-                        <td>{responseData.Kommune}</td>
-                        <td>{responseData.Forening}</td>
-                        <td>{responseData.Kontakt_skrab}</td>
-                        <td>{responseData.Kontakt}</td>
-                        <td>{responseData.Mail_skrab}</td> 
-                        <td>{responseData.Telefon_skrab}</td> 
+                        <td className="col content">{responseData.Kommune}</td>
+                        <td className="col content">{responseData.Forening}</td>
+                        <td className="col content">{responseData.Kontakt_skrab}</td>
+                        <td className="col content">{responseData.Telefon_skrab}</td>
+                        <td className="col content">{responseData.Mail_skrab}</td> 
                         </tr>
                     ))}
                 </tbody>
@@ -133,10 +144,10 @@ class Search extends React.Component{
             </table>
             <div>
             <label>
-              Add a note:
+              Add a note:&nbsp;&nbsp;
               <input type="text" value={this.state.value} onChange={this.handleChange} />
-            </label>
-            <button onClick={this.getNote}>Post Note</button>
+            </label>&nbsp;&nbsp;
+            <button onClick={this.getNote} className="primary-button">Post Note</button>
           </div>
         </div>
         );
