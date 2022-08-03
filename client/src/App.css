@@ -1,9 +1,6 @@
 .App {
   text-align: center;
 }
-body{
-  width: fit-content;
-}
 
 .Logo-img {
   height: 12vh;
@@ -105,6 +102,9 @@ body{
   }
   .search-bar .primary-button{
     margin-top: 10px;
+  }
+  body{
+    width: fit-content;
   }
   /* .heading{
     float: left!important;
