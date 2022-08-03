@@ -147,7 +147,7 @@ class Search extends React.Component{
               Add a note:&nbsp;&nbsp;
               <input type="text" value={this.state.value} onChange={this.handleChange} />
             </label>&nbsp;&nbsp;
-            <button onClick={this.getNote} className="primary-button">Post Note</button>
+            <button onClick={this.getNote} className="primary-button-note">Post Note</button>
           </div>
         </div>
         );

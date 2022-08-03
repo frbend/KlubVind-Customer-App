@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+body{
+  width: fit-content;
+}
 
 .Logo-img {
   height: 12vh;
@@ -58,6 +61,18 @@
 .primary-button:hover{
   background-color: #72C2E2;
 }
+.primary-button-note{
+  background-color: #030437;
+  color: white;
+  border: none;
+  width: 120px;
+  height: 35px;
+  border-radius: 8px;
+  transition: .5s ease-in-out;
+}
+.primary-button-note:hover{
+  background-color: #72C2E2;
+}
 .Body{
   background-color: #ffffff;
 }
@@ -82,8 +97,8 @@
 }
 @media only screen and (max-width: 425px){
   .Logo-img{
-    height: 15vh;
-    left: 40px;
+    height: 10vh;
+    left: 100px;
   }
   .App-header h2{
     padding-top: 15%;
