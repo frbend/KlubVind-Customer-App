@@ -96,6 +96,8 @@
   .Logo-img{
     height: 10vh;
     left: 100px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .App-header h2{
     padding-top: 15%;
