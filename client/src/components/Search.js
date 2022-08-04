@@ -99,20 +99,21 @@ class Search extends React.Component{
 
 
 
-
-
     render(){
         return(
         <div>
             <div className="search-bar">
                 <label className="searchHeading">Search by Kommune:&nbsp;&nbsp;&nbsp;</label>
                 <input type="text" onChange={this.onChange} value={this.state.search} onKeyDown={(e) => this.onEnter(e) }/>&nbsp;&nbsp;
-                <button onClick={this.getData} className="primary-button" type="submit">Search</button><br />
+                <button onClick={this.getData} className="primary-button" type="submit">Search</button>
             </div>
-            <div className="button-box col-lg-12">
-            &nbsp;&nbsp;&nbsp;&nbsp;<button onClick={this.prevItem} className="primary-button">Previous</button>&nbsp;&nbsp;
-                <button onClick={this.nextItem} className="primary-button">Next</button>
+            <div className="button-box">
+            &nbsp;&nbsp;&nbsp;&nbsp;<button onClick={this.prevItem} className="primary-button" type="submit">Previous</button>&nbsp;&nbsp;
+                <button onClick={this.nextItem} className="primary-button" type="submit">Next</button>
             </div>
+
+        <div className="search-desktop">
+            {/* desktop */}
             <table className="table">
                 <thead>
                     <tr>
@@ -135,6 +136,33 @@ class Search extends React.Component{
                     ))}
                 </tbody>
             </table>
+        </div>
+                {/* mobile */}
+        <div className="search-mobile">
+            <table className="table table-striped">
+                    {this.state.responseData.map(responseData =>(
+                    <tbody>
+                        <tr key={responseData.id}></tr>
+
+                        <tr><th scope="row">Kommune</th></tr>
+                        <tr><td>{responseData.Kommune}</td></tr>
+
+                        <tr><th scope="row">Forening</th></tr>
+                        <tr><td>{responseData.Forening}</td></tr>
+
+                        <tr><th scope="row">Kontakt</th></tr>
+                        <tr><td>{responseData.Kontakt_skrab}</td></tr>
+
+                        <tr><th scope="row">Telefon</th></tr>
+                        <tr><td>{responseData.Telefon_skrab}</td></tr>
+                        
+                        <tr><th scope="row">Email</th></tr>
+                        <tr><td>{responseData.Mail_skrab}</td></tr>
+                    </tbody>
+                    ))}
+            </table>
+        </div>
+
             <table className="table">
                 <thead>
                     <tr>

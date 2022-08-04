@@ -83,6 +83,18 @@
 .App-link {
   color: #61dafb;
 }
+.table-mobile{
+  margin-left: 30%;
+  margin-right: 30%;
+  text-align: left;
+}
+
+.search-mobile {
+  display: none!important;
+}
+.search-desktop{
+  display: block!important;
+}
 
 @keyframes App-logo-spin {
   from {
@@ -94,12 +106,9 @@
 }
 @media only screen and (max-width: 425px){
   .Logo-img{
-    height: 10vh;
+    height: 105px;
     margin-left: auto;
     margin-right: auto;
-  }
-  .App-header h2{
-    padding-top: 15%;
   }
   .search-bar .primary-button{
     margin-top: 10px;
@@ -107,9 +116,28 @@
   body{
     width: fit-content;
   }
-  /* .heading{
-    float: left!important;
-  } */
+  .App-header{
+    min-height: 180px;
+  }
+  .App-header h2{
+    padding-top: 30%;
+  }
+  .primary-button{
+    width: 380px;
+    height: 50px;
+  }
+  .button-box button{
+    margin-bottom: -15px;
+  }
+  .search-bar button{
+    margin-bottom: -15px;
+  }
+  .search-desktop{
+    display: none!important;
+  }
+  .search-mobile{
+    display: block!important;
+  }
 
 }
 
