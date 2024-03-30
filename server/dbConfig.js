@@ -10,7 +10,6 @@ const connection = mysql.createConnection( {
     port: connectData.port
 })
 
-//mysql --user avnadmin --password=************************ --host testingdb-for-klubvind-app-testingdb-for-project.a.aivencloud.com --port 14351 defaultdb
 
 connection.connect(function(err){
     if(err){
