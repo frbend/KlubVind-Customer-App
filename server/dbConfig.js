@@ -1,12 +1,16 @@
-const mysql = require('mysql');
+const mysql = require('mysql2');
 
+const connectData = require ('./config.json')
 
 const connection = mysql.createConnection( {
-    host: 'mysql201.dandomain.dk',
-    user: 'klubvinddk02',
-    password: 'RmrzosDZnj31pD',
-    database: 'klubvinddk02_db',
+    host: connectData.host,
+    user: connectData.user,
+    password: connectData.password,
+    database: connectData.database,
+    port: connectData.port
 })
+
+//mysql --user avnadmin --password=************************ --host testingdb-for-klubvind-app-testingdb-for-project.a.aivencloud.com --port 14351 defaultdb
 
 connection.connect(function(err){
     if(err){

@@ -1,5 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
+//import Button from '@mui/material/Button';
 //import NextResult from './NextResult';
 
 
@@ -28,7 +29,7 @@ class Search extends React.Component{
         if(this.state.search === ""){
             console.log("empty search")
         }else{
-        Axios.get('https://klubvind-call-list.herokuapp.com/list/Kommune/' + this.state.search)
+        Axios.get('http://localhost:8080/list/Kommune/' + this.state.search)
           .then(responseData => {
               if(responseData.data.length === 0){
                 console.warn("No results")
@@ -59,7 +60,7 @@ class Search extends React.Component{
     //for switching between previous and next line
 
     prevItem =() =>{
-        Axios.get('https://klubvind-call-list.herokuapp.com/list/Kommune/:Kommune/prev/'+ this.state.responseData[0].id)
+        Axios.get('http://localhost:8080/list/Kommune/:Kommune/prev/'+ this.state.responseData[0].id)
         .then(prevData =>{
             this.setState({responseData: prevData.data});
             console.log(prevData.data[0])
@@ -67,7 +68,7 @@ class Search extends React.Component{
 }
 
     nextItem =() =>{
-        Axios.get('https://klubvind-call-list.herokuapp.com/list/Kommune/:Kommune/next/'+ this.state.responseData[0].id)
+        Axios.get('http://localhost:8080/list/Kommune/:Kommune/next/'+ this.state.responseData[0].id)
         .then(newData =>{
             this.setState({responseData: newData.data});
             console.log(newData.data[0])
@@ -129,9 +130,9 @@ class Search extends React.Component{
                         <tr key={responseData.id}>
                         <td className="col content">{responseData.Kommune}</td>
                         <td className="col content">{responseData.Forening}</td>
-                        <td className="col content">{responseData.Kontakt_skrab}</td>
-                        <td className="col content">{responseData.Telefon_skrab}</td>
-                        <td className="col content">{responseData.Mail_skrab}</td> 
+                        <td className="col content">{responseData.Kontakt}</td>
+                        <td className="col content">{responseData.Telefon}</td>
+                        <td className="col content">{responseData.Email}</td> 
                         </tr>
                     ))}
                 </tbody>
@@ -141,8 +142,7 @@ class Search extends React.Component{
         <div className="search-mobile">
             <table className="table table-striped">
                     {this.state.responseData.map(responseData =>(
-                    <tbody>
-                        <tr key={responseData.id}></tr>
+                    <tbody key={responseData.id}>
 
                         <tr><th scope="row">Kommune</th></tr>
                         <tr><td>{responseData.Kommune}</td></tr>
@@ -151,13 +151,13 @@ class Search extends React.Component{
                         <tr><td>{responseData.Forening}</td></tr>
 
                         <tr><th scope="row">Kontakt</th></tr>
-                        <tr><td>{responseData.Kontakt_skrab}</td></tr>
+                        <tr><td>{responseData.Kontakt}</td></tr>
 
                         <tr><th scope="row">Telefon</th></tr>
-                        <tr><td>{responseData.Telefon_skrab}</td></tr>
+                        <tr><td>{responseData.Telefon}</td></tr>
                         
                         <tr><th scope="row">Email</th></tr>
-                        <tr><td>{responseData.Mail_skrab}</td></tr>
+                        <tr><td>{responseData.Email}</td></tr>
                     </tbody>
                     ))}
             </table>
@@ -183,6 +183,9 @@ class Search extends React.Component{
               <input type="text" value={this.state.value} onChange={this.handleChange} />
             </label>&nbsp;&nbsp;
             <button onClick={this.getNote} className="primary-button-note">Post Note</button>
+            <div>
+                {/* <Button variant="contained">Hello World</Button> */}
+            </div>
           </div>
         </div>
         );

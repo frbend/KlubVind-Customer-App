@@ -14,7 +14,7 @@ app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 app.get('/list', function (req, res) {
 
-    var getTopList = "SELECT * FROM call_list LIMIT 3";
+    var getTopList = "SELECT * FROM KlubVindStagingDb LIMIT 3";
 
     connection.query(getTopList, function(err, result){
         if(err){
@@ -29,7 +29,7 @@ app.get('/list', function (req, res) {
 
 app.get('/list/Kommune/:Kommune', function (req, res) {
 
-    var getCallList = 'SELECT * FROM call_list WHERE Kommune = ? LIMIT 1';
+    var getCallList = 'SELECT * FROM KlubVindStagingDb WHERE Kommune = ? LIMIT 1';
 
 
     connection.query(getCallList, [req.params.Kommune], function(err, result){
@@ -45,7 +45,7 @@ app.get('/list/Kommune/:Kommune', function (req, res) {
 
 app.get('/list/Kommune/:Kommune/next/:id', function (req, res) {
 
-    var getNextRow = 'SELECT * FROM call_list WHERE id > ? LIMIT 1'
+    var getNextRow = 'SELECT * FROM KlubVindStagingDb WHERE id > ? LIMIT 1'
     connection.query(getNextRow,[req.params.id], function(err, result){
         if(err){
             console.log(err);
@@ -59,7 +59,7 @@ app.get('/list/Kommune/:Kommune/next/:id', function (req, res) {
 
 app.get('/list/Kommune/:Kommune/prev/:id', function (req, res) {
 
-    var getPrevRow = 'SELECT * FROM call_list WHERE id < ? ORDER BY id DESC LIMIT 1'
+    var getPrevRow = 'SELECT * FROM KlubVindStagingDb WHERE id < ? ORDER BY id DESC LIMIT 1'
     connection.query(getPrevRow,[req.params.id], function(err, result){
         if(err){
             console.log(err);
