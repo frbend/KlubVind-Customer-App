@@ -31,7 +31,7 @@
     "install-client": "cd client && npm install",
     "heroku-build": "concurrently --kill-others-on-fail \"npm run server\" \"npm run build --prefix client\"",
     "server": "cd server && node app.js",
-    "build": "npm run build --prefix client",
+    "build": "\"npm run build --prefix client\" \"npm run serve-server\"",
     "dev-server": "cd server && nodemon app.js",
     "serve-server": "cd client && serve -s build",
     "start": "concurrently --kill-others-on-fail \"npm run dev-server\" \"npm run start --prefix client\"",

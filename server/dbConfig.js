@@ -1,5 +1,6 @@
 const mysql = require('mysql2');
 
+//not needed for production
 //const connectData = require ('./config.json')
 
 const connection = mysql.createConnection( {
