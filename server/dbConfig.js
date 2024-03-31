@@ -1,6 +1,6 @@
 const mysql = require('mysql2');
 
-const connectData = require ('./config.json')
+//const connectData = require ('./config.json')
 
 const connection = mysql.createConnection( {
     host: process.env.host || connectData.host,
