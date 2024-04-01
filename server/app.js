@@ -105,3 +105,12 @@ app.get('*', function(request, response) {
 
 
  app.listen(port, () =>console.log(`Listening on port ${port}`));
+ 
+ // Gracefully shutdown server when SIGTERM signal is received
+process.on('SIGTERM', () => {
+    console.log('Received SIGTERM. Closing server...');
+    server.close(() => {
+      console.log('Server closed.');
+      process.exit(0);
+    });
+  });
