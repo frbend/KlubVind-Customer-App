@@ -1,6 +1,8 @@
 const mysql = require('mysql2');
+require('dotenv').config();
 
-//not needed for production
+
+//not needed for production -- the build still doesn't work -- need to do something about @azure/msal-node
 //const connectData = require ('./config.json')
 
 const connection = mysql.createConnection( {
