@@ -30,7 +30,7 @@
   "scripts": {
     "install-client": "cd client && npm install",
     "heroku-build": "concurrently --kill-others-on-fail \"npm run server\" \"npm run build --prefix client\" \"npm run serve-server\"",
-    "netlify-build": "concurrently --kill-others-on-fail \"npm run pre-build\" \"npm run build\"",
+    "netlify-build": " npm run build && npm run post-build",
     "pre-build": "cd server && node app.js",
     "post-build": "cd client && serve -s build",
     "server": "cd server && node app.js",
