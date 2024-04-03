@@ -29,7 +29,7 @@ class Search extends React.Component{
         if(this.state.search === ""){
             console.log("empty search")
         }else{
-        Axios.get('list/' + this.state.search)
+        Axios.get('https://klub-vind-customer-8f75tafgb-frank-bendiks-projects.vercel.app/list/Kommune/' + this.state.search)
           .then(responseData => {
               if(responseData.data.length === 0){
                 console.warn("No results")
@@ -60,7 +60,7 @@ class Search extends React.Component{
     //for switching between previous and next line
 
     prevItem =() =>{
-        Axios.get('http://localhost:8080/list/Kommune/:Kommune/prev/'+ this.state.responseData[0].id)
+        Axios.get('https://klub-vind-customer-8f75tafgb-frank-bendiks-projects.vercel.app/list/Kommune/:Kommune/prev/'+ this.state.responseData[0].id)
         .then(prevData =>{
             this.setState({responseData: prevData.data});
             console.log(prevData.data[0])
@@ -68,7 +68,7 @@ class Search extends React.Component{
 }
 
     nextItem =() =>{
-        Axios.get('http://localhost:8080/list/Kommune/:Kommune/next/'+ this.state.responseData[0].id)
+        Axios.get('https://klub-vind-customer-8f75tafgb-frank-bendiks-projects.vercel.app/list/Kommune/:Kommune/next/'+ this.state.responseData[0].id)
         .then(newData =>{
             this.setState({responseData: newData.data});
             console.log(newData.data[0])
