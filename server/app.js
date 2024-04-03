@@ -7,17 +7,9 @@ const path = require("path");
 apiPort = 8080;
 const port = process.env.PORT || apiPort; // Pick port 8080 if the PORT env variable is empty.
 const app = express();
-app.use(cors());
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 
-
-app.use(function(req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
+app.use(cors());
 
 
 app.get('/list', function (req, res) {
