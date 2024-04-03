@@ -27,7 +27,7 @@ app.get('/list', function (req, res) {
     });
 });
 
-app.get('/list/Kommune/:Kommune', function (req, res) {
+app.get('https://klub-vind-customer-app-azure.vercel.app/list/Kommune/:Kommune', function (req, res) {
 
     var getCallList = 'SELECT * FROM KlubVindStagingDb WHERE Kommune = ? LIMIT 1';
 
@@ -43,7 +43,7 @@ app.get('/list/Kommune/:Kommune', function (req, res) {
     });
 });
 
-app.get('/list/Kommune/:Kommune/next/:id', function (req, res) {
+app.get('https://klub-vind-customer-app-azure.vercel.app/list/Kommune/:Kommune/next/:id', function (req, res) {
 
     var getNextRow = 'SELECT * FROM KlubVindStagingDb WHERE id > ? LIMIT 1'
     connection.query(getNextRow,[req.params.id], function(err, result){
@@ -57,7 +57,7 @@ app.get('/list/Kommune/:Kommune/next/:id', function (req, res) {
     });
 });
 
-app.get('/list/Kommune/:Kommune/prev/:id', function (req, res) {
+app.get('https://klub-vind-customer-app-azure.vercel.app/list/Kommune/:Kommune/prev/:id', function (req, res) {
 
     var getPrevRow = 'SELECT * FROM KlubVindStagingDb WHERE id < ? ORDER BY id DESC LIMIT 1'
     connection.query(getPrevRow,[req.params.id], function(err, result){
@@ -107,3 +107,11 @@ app.get('*', function(request, response) {
  app.listen(port, () =>console.log(`Listening on port ${port}`
  ));
  
+// // // Gracefully shutdown server when SIGTERM signal is received
+// process.on('SIGTERM', () => {
+//     console.log('Received SIGTERM. Closing server...');
+//     server.close(() => {
+//       console.log('Server closed.');
+//       process.exit(0);
+//     });
+//   });
