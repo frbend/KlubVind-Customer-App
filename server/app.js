@@ -11,6 +11,10 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 
+// Allow requests from specific origin
+app.use(cors({ origin: 'https://klub-vind-customer-app-azure.vercel.app' }));
+
+
 
 app.get('/list', function (req, res) {
 
