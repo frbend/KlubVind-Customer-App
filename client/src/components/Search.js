@@ -29,7 +29,7 @@ class Search extends React.Component{
         if(this.state.search === ""){
             console.log("empty search")
         }else{
-        Axios.get(`https://klub-vind-customer-23t6c06l2-frank-bendiks-projects.vercel.app/Kommune/${this.state.search}`)
+        Axios.get('list/' + this.state.search)
           .then(responseData => {
               if(responseData.data.length === 0){
                 console.warn("No results")
