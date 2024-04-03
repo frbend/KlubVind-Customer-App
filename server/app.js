@@ -11,9 +11,13 @@ app.use(cors());
 app.use(express.static(path.resolve(__dirname, "../client/build")));
 
 
-// Allow requests from specific origin
-app.use(cors({ origin: 'https://klub-vind-customer-app-azure.vercel.app' }));
-
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', true);
+    next();
+});
 
 
 app.get('/list', function (req, res) {
